@@ -1,0 +1,65 @@
+<div *ngIf="pelicula" style="display: flex">
+  <div>
+    <h2>{{ pelicula.titulo }} ({{ fechaLanzamiento.getFullYear() }})</h2>
+
+    <mat-chip-list>
+      <mat-chip
+        [routerLink]="['/peliculas/buscar']"
+        [queryParams]="{ generoId: genero.id }"
+        *ngFor="let genero of pelicula.generos"
+      >
+        {{ genero.nombre }}
+      </mat-chip>
+    </mat-chip-list>
+    | {{ fechaLanzamiento.toDateString() }} | Promedio: {{pelicula.promedioVoto}} | Tu voto: 
+    <app-rating 
+    (rated)="rated($event)"
+    [ratingSeleccionado]="pelicula.votoUsuario"></app-rating>
+
+    <div style="display: flex">
+      <span style="display: inline-block; margin-right: 1rem">
+        <img [src]="pelicula.poster" style="width: 225px; height: 315px" />
+      </span>
+      <div *ngIf="pelicula.trailer">
+        <iframe
+          width="560"
+          height="315"
+          [src]="trailerURL"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <div style="margin-top:1rem">
+        <h3>Resumen</h3>
+        <div>
+            <markdown [data]="pelicula.resumen" ngPreserveWhitespaces></markdown>
+        </div>
+    </div>
+
+    <div style="margin-top: 1rem;">
+        <h3>Actores</h3>
+        <div style="display:flex; flex-direction: column;">
+            <div *ngFor="let actor of pelicula.actores" style="margin-bottom: 2px;">
+                <img [src]="actor.foto"
+                style="width: 50px; vertical-align: middle;"
+                />
+                <span style="display: inline-block; width: 200px; margin-left: 1rem;">
+                    {{actor.nombre}}
+                </span>
+                <span style="display: inline-block; width: 45px;">...</span>
+                <span>{{actor.personaje}}</span>
+            </div>
+        </div>
+
+    </div>
+  </div>
+  <div style="padding-left: 1rem; position: relative; width: 100%;" *ngIf="coordenadas.length > 0">
+    <h2>Mostrándose en los siguientes cines</h2>
+    <app-mapa [coordenadasIniciales]="coordenadas" [soloLectura]="true"></app-mapa>
+  </div>
+</div>
+
+<mat-spinner *ngIf="!pelicula"></mat-spinner>

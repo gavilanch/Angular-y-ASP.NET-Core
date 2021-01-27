@@ -1,0 +1,47 @@
+<h2>Cines</h2>
+
+<button mat-flat-button color="primary" routerLink="/cines/crear">Crear nuevo</button>
+
+<app-listado-generico [listado]="cines">
+    <ng-container contenido>
+      <table #table mat-table [dataSource]="cines" class="mat-elevation-z8 tabla-indice">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <a
+              routerLink="/cines/editar/{{ element.id }}"
+              mat-flat-button
+              color="primary"
+              >Editar</a
+            >
+            <button mat-flat-button color="warn" 
+            [swal]="{title: 'Confirmación', 
+            text: '¿Está seguro que desea borrar el registro?', 
+            showCancelButton: true}"
+            (confirm)="borrar(element.id)">Borrar</button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons
+      [length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"
+      class="mat-elevation-z8"
+      (page)="actualizarPaginacion($event)"
+      >
+  
+      </mat-paginator>
+  
+    </ng-container>
+  </app-listado-generico>

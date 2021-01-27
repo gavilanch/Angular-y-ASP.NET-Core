@@ -1,0 +1,34 @@
+<app-listado-generico [listado]="peliculas">
+  <ng-container contenido>
+    <div class="peliculas-contenedor">
+    <div
+      *ngFor="let pelicula of peliculas; let index = index"
+      class="pelicula-contenedor"
+    >
+      <a [routerLink]="'/pelicula/' + pelicula.id">
+        <img [src]="pelicula.poster" alt="Poster" />
+      </a>
+      <p>
+        <a [routerLink]="'/pelicula/' + pelicula.id">{{pelicula.titulo}}</a>
+      </p>
+      <div>
+        <a mat-flat-button color="primary" [routerLink]="'/peliculas/editar/' + pelicula.id">
+          Editar
+        </a>
+        <button
+        mat-flat-button
+        color="warn"
+        type="button"
+        [swal]="{title: 'Confirmación', 
+            text: '¿Está seguro que desea borrar el registro?', 
+            showCancelButton: true}"
+            (confirm)="borrar(pelicula.id)"
+        >
+        Borrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  </ng-container>
+</app-listado-generico>
