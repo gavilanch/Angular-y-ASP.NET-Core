@@ -1,0 +1,52 @@
+@if(pelicula){
+    <div>
+        <h2>{{pelicula.titulo}} ({{pelicula.fechaLanzamiento.getFullYear()}})</h2>
+
+        <mat-chip-listbox>
+            @for (genero of pelicula.generos; track $index) {
+                <mat-chip [routerLink]="['/peliculas/filtrar']" [queryParams]="{generoId: genero.id}">{{genero.nombre}}</mat-chip>
+            }
+        </mat-chip-listbox> | {{pelicula.fechaLanzamiento.toDateString()}} | Promedio: 0.0 | Tu voto: 0.0
+
+        <div style="display: flex">
+            <span style="display: inline-block; margin-right: 1rem;">
+                <img [src]="pelicula.poster" style="width: 225px; height: 315px"/>
+            </span>
+            @if (pelicula.trailer){
+                <div>
+                    <iframe width="565" height="315" [src]="trailerURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                    </iframe>
+                </div>
+            }
+        </div>
+
+        @if (pelicula.actores){
+            <div style="margin-top: 1rem">
+                <h3>Actores</h3>
+                <div style="display: flex; flex-direction: column;">
+                    @for (actor of pelicula.actores; track $index) {
+                        <div style="margin-bottom: 2px;">
+                            <img [src]="actor.foto" style="width: 50px; vertical-align: middle;" />
+                            <span style="display: inline-block; width: 200px; margin-left: 1rem">
+                                {{actor.nombre}}
+                            </span>
+                            <span style="display: inline-block; width: 45px">...</span>
+                            <span>{{actor.personaje}}</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+       
+        @if (coordenadas.length > 0){
+            <div>
+                <h2>Mostrándose en los siguientes cines</h2>
+                <app-mapa [coordenadasIniciales]="coordenadas" [soloLectura]="true"></app-mapa>
+            </div>
+        }
+
+    </div>
+} @else {
+    <app-cargando></app-cargando>
+}

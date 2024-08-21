@@ -1,0 +1,39 @@
+<h2>{{titulo}}</h2>
+
+<button mat-flat-button routerLink="{{rutaCrear}}">Crear nuevo</button>
+
+<app-listado-generico [listado]="entidades">
+    <ng-container contenido>
+        <table mat-table [dataSource]="entidades" class="mat-elevation-z8 indice-elementos">
+
+            @for (columna of columnasAMostrar; track $index) {
+                @if (columna === 'acciones'){
+                    <ng-container matColumnDef="acciones">
+                        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                        <td mat-cell *matCellDef="let elemento">
+                            <a routerLink="{{rutaEditar + '/' + elemento.id}}" mat-flat-button>Editar</a>
+                            <button mat-flat-button color="warn" 
+                            [swal]="{title: 'Confirmación', text:'¿Deseas borrar este registro?', showCancelButton: true}"
+                            (confirm)="borrar(elemento.id)" 
+                            >Borrar</button>
+                        </td>
+                    </ng-container>
+                } @else {
+                    <ng-container matColumnDef="{{columna}}">
+                        <th mat-header-cell *matHeaderCellDef>{{primeraLetraEnMayuscula(columna)}}</th>
+                        <td mat-cell *matCellDef="let elemento">{{elemento[columna]}}</td>
+                    </ng-container>
+                }
+            }
+
+            <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+        </table>
+
+        <mat-paginator showFirstLastButtons [length]="cantidadTotalRegistros" 
+        [pageIndex]="paginacion.pagina-1"
+        [pageSize]="paginacion.recordsPorPagina"
+        [pageSizeOptions]="[5, 10, 50]" class="mat-elevation-z8" (page)="actualizarPaginacion($event)"></mat-paginator>
+
+    </ng-container>
+</app-listado-generico>

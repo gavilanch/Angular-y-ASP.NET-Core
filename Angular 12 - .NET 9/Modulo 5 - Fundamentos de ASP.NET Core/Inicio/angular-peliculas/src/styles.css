@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    height: fit-content;
+}
+
+form button {
+    margin-right: 1rem;
+}
+
+mat-form-field {
+    width: 100%;
+    max-width: 500px;
+    display: block !important;
+    margin-top: 1rem
+}
+
+.contenedor-botones{
+    margin-top: 1rem;
+}

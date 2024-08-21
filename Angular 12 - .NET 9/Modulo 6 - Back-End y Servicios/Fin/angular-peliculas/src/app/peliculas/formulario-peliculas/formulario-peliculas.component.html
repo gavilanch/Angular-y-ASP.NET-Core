@@ -1,0 +1,41 @@
+<form (submit)="guardarCambios()" [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput [formControl]="form.controls.titulo" />
+        <mat-error>{{obtenerErrorCampoTitulo()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Fecha Lanzamiento</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="form.controls.fechaLanzamiento" />
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-error>{{obtenerErrorCampoFechaLanzamiento()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Trailer</mat-label>
+        <input matInput [formControl]="form.controls.trailer" />
+    </mat-form-field>
+
+    <app-input-img titulo="Poster de la Película" [urlImagenActual]="modelo?.poster" (archivoSeleccionado)="archivoSeleccionado($event)"></app-input-img>
+
+    <h4>Seleccione los Géneros</h4>
+
+    <app-selector-multiple [Seleccionados]="generosSeleccionados" [NoSeleccionados]="generosNoSeleccionados"></app-selector-multiple>
+
+    <h4>Seleccione los Cines</h4>
+
+    <app-selector-multiple [Seleccionados]="cinesSeleccionados" [NoSeleccionados]="cinesNoSeleccionados"></app-selector-multiple>
+
+    <h4>Seleccione los Actores</h4>
+
+    <app-autocomplete-actores [actoresSeleccionados]="actoresSeleccionados"></app-autocomplete-actores>
+
+    <div class="contenedor-botones">
+        <button type="submit" mat-flat-button [disabled]="form.invalid">Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/">Cancelar</a>
+    </div>
+
+</form>

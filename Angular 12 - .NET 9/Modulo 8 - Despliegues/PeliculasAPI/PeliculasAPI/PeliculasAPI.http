@@ -1,0 +1,6 @@
+@PeliculasAPI_HostAddress = http://localhost:5043
+
+GET {{PeliculasAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

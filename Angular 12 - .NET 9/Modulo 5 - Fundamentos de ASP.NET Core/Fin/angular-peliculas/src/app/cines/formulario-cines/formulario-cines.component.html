@@ -1,0 +1,18 @@
+<form (submit)="guardarCambios()" [formGroup]="form">
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput [formControl]="form.controls.nombre" />
+        <mat-error>{{obtenerErrorCampoNombre()}}</mat-error>
+    </mat-form-field>
+
+    <h4>Seleccione la ubicación del cine</h4>
+
+    <app-mapa (coordenadaSeleccionada)="coordenadaSeleccionada($event)" [coordenadasIniciales]="coordenadasIniciales"></app-mapa>
+
+    <div class="contenedor-botones">
+        <button type="submit" mat-flat-button [disabled]="form.invalid">Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/cines">
+            Cancelar
+        </a>
+    </div>
+</form>

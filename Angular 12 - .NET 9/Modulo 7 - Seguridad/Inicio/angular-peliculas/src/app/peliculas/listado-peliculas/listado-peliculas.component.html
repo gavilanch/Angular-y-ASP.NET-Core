@@ -1,0 +1,28 @@
+
+
+<app-listado-generico [listado]="peliculas">
+  <ng-container contenido>
+    <div class="peliculas-contenedor">
+      @for (pelicula of peliculas; track $index) {
+        <div class="pelicula-contenedor">
+          <a [routerLink]="['/pelicula', pelicula.id]">
+            @if(pelicula.poster){
+              <img [src]="pelicula.poster" width="169" height="250" />
+            } @else {
+              <img srcc="default.jpg" width="169" height="250" />
+            }
+          </a>
+          <p>
+            <a [routerLink]="['/pelicula', pelicula.id]">{{pelicula.titulo}}</a>
+          </p>
+          <div>
+            <a mat-flat-button [routerLink]="['/peliculas/editar', pelicula.id]">Editar</a>
+            <button mat-flat-button type="button" color="warn" [swal]="{title: 'Confirmación', 
+              text: '¿Deseas borrar el registro?', showCancelButton: true}" (confirm)="borrar(pelicula.id)" >Borrar</button>
+          </div>
+        </div>
+      }
+    </div>
+  </ng-container>
+</app-listado-generico>
+

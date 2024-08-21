@@ -1,0 +1,30 @@
+
+<h2>listado-peliculas.component.html</h2>
+
+<app-listado-generico [listado]="peliculas">
+  <ng-container contenido>
+    @for (pelicula of peliculas; track $index) {
+      <div class="contenedor-pelicula">
+        <div style="display: flex; flex-direction: row; gap: 10px">
+          <div>
+            @if (pelicula.poster){
+            <img [src]="pelicula.poster" width="169" height="250" />
+            } @else {
+            <img src="default.jpg" width="169" height="250" />
+            }
+          </div>
+          <div>
+            <p>{{$index}}) Película: {{pelicula.titulo }}</p>
+            <p>Fecha Lanzamiento: {{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy"}}</p>
+            <p>Precio: {{pelicula.precio | currency}}</p>
+            <button mat-flat-button (click)="remover(pelicula)">
+              <mat-icon>delete</mat-icon>
+              Remover</button>
+          </div>
+        </div>
+      
+      </div>
+      }
+  </ng-container>
+</app-listado-generico>
+
