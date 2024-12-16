@@ -1,0 +1,34 @@
+<h2>Buscar Películas</h2>
+
+<form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput [formControl]="form.controls.titulo" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Género</mat-label>
+        <mat-select [formControl]="form.controls.generoId">
+                <mat-option [value]="0">--Seleccione un género--</mat-option>
+            @for (genero of generos; track $index) {
+                <mat-option [value]="genero.id">{{genero.nombre}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <div>
+        <mat-checkbox [formControl]="form.controls.proximosEstrenos">Próximos Estrenos</mat-checkbox>
+    </div>
+
+    <div>
+        <mat-checkbox [formControl]="form.controls.enCines">En Cines</mat-checkbox>
+    </div>
+
+    <div>
+        <button (click)="limpiar()" mat-flat-button color="warn">Limpiar</button>
+    </div>
+
+</form>
+
+<app-listado-peliculas [peliculas]="peliculas"></app-listado-peliculas>

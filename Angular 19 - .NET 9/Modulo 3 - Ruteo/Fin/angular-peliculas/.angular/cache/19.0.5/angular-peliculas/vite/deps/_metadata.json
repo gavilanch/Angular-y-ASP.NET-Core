@@ -1,0 +1,73 @@
+{
+  "hash": "15e7d454",
+  "configHash": "57738eeb",
+  "lockfileHash": "6b5c82c7",
+  "browserHash": "9b5c0010",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "4a246e6a",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "89201810",
+      "needsInterop": false
+    },
+    "@angular/material/button": {
+      "src": "../../../../../../node_modules/@angular/material/fesm2022/button.mjs",
+      "file": "@angular_material_button.js",
+      "fileHash": "80ffcc92",
+      "needsInterop": false
+    },
+    "@angular/material/icon": {
+      "src": "../../../../../../node_modules/@angular/material/fesm2022/icon.mjs",
+      "file": "@angular_material_icon.js",
+      "fileHash": "38a48283",
+      "needsInterop": false
+    },
+    "@angular/material/toolbar": {
+      "src": "../../../../../../node_modules/@angular/material/fesm2022/toolbar.mjs",
+      "file": "@angular_material_toolbar.js",
+      "fileHash": "e197f0b0",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "f49afddf",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations/async": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/animations/async.mjs",
+      "file": "@angular_platform-browser_animations_async.js",
+      "fileHash": "34713523",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "f098fb1e",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "browser-NQ72YKZ3": {
+      "file": "browser-NQ72YKZ3.js"
+    },
+    "chunk-XIJPGQ2A": {
+      "file": "chunk-XIJPGQ2A.js"
+    },
+    "chunk-TJTWMZR2": {
+      "file": "chunk-TJTWMZR2.js"
+    },
+    "chunk-ZWMKT7X3": {
+      "file": "chunk-ZWMKT7X3.js"
+    },
+    "chunk-VBEK3CO6": {
+      "file": "chunk-VBEK3CO6.js"
+    }
+  }
+}

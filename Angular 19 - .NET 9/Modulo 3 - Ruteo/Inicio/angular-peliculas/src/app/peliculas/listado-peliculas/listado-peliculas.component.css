@@ -1,0 +1,9 @@
+.contenedor-pelicula {
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    padding: 1rem; 
+}
+
+h2 {
+    color: blue;
+}
