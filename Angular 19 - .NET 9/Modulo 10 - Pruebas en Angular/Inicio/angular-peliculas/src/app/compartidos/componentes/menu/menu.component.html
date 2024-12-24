@@ -1,0 +1,53 @@
+<mat-toolbar>
+    <span>
+        <a routerLink="" mat-button>
+            <mat-icon>local_movies</mat-icon> Angular Películas
+        </a>
+    </span>
+
+    <div>
+        <a mat-button routerLink="peliculas/filtrar">
+            <mat-icon>search</mat-icon>
+            Buscar Películas</a>
+    </div>
+
+    <app-autorizado rol="admin">
+        <ng-container autorizado>
+            <div>
+                <a mat-button routerLink="generos">Géneros</a>
+            </div>
+        
+            <div>
+                <a mat-button routerLink="actores">Actores</a>
+            </div>
+        
+            <div>
+                <a mat-button routerLink="cines">Cines</a>
+            </div>
+        
+            <div>
+                <a mat-button routerLink="peliculas/crear">Crear Película</a>
+            </div>
+
+            <div>
+                <a mat-button routerLink="usuarios">Usuarios</a>
+            </div>
+        </ng-container>
+    </app-autorizado>
+
+    <div class="espacio"></div>
+
+    <app-autorizado style="display:inline">
+        <ng-container autorizado>
+            <span class="saludo">Hola, {{seguridadService.obtenerCampoJWT('email')}}</span>
+            <a mat-button (click)="seguridadService.logout()">Logout</a>
+        </ng-container>
+
+        <ng-container noAutorizado>
+            <a mat-button routerLink="login">Login</a>
+            <a mat-button routerLink="registrar">Registro</a>
+        </ng-container>
+    </app-autorizado>
+
+   
+</mat-toolbar>

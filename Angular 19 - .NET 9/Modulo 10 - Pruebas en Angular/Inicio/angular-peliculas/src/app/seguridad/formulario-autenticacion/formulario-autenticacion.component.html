@@ -1,0 +1,21 @@
+<h2>{{titulo}}</h2>
+
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
+<form (submit)="guardarCambios()" [formGroup]="form">
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="form.controls.email" />
+        <mat-error>{{obtenerMensajeErrorEmail()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [formControl]="form.controls.password" />
+        <mat-error>{{obtenerMensajeErrorPassword()}}</mat-error>
+    </mat-form-field>
+
+    <div class="contenedor-botones">
+        <button mat-flat-button type="submit" [disabled]="form.invalid">{{titulo}}</button>
+    </div>
+</form>
